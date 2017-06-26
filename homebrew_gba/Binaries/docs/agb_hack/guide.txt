@@ -1,0 +1,223 @@
+The following is adapted from Don G. Kneller's PC Hack documentation.
+
+
+
+A Guide to AGB_Hack
+===================
+
+
+
+Introduction
+------------
+
+The object of Hack is to descend into a dungeon to retrieve the Amulet of
+Yendor and return to the surface with it. The Amulet is in the possession of
+the Wizard of Yendor.
+
+Your character
+--------------
+
+You can be one of several character classes when you start the game. Each
+character starts with different attributes (strength, hit points) and a
+different inventory of items (armor, weapons, etc). You should try the
+different classes to see which is best for you. The class most likely to
+survive the first few dungeon levels is probably the cave-person. However,
+each class has its strong and weak points so you should try them all.
+
+The status line
+---------------
+
+At the bottom of the screen is displayed information about your state of
+being. You see the dungeon level you are on, how many hit points you have now
+(and will have when fully recovered), what your armor class is (the lower the
+better), your strength, experience level and the state of your stomach.
+
+The little dog
+--------------
+
+You start Hack accompanied by a little dog (nameable with the 'C' command) who
+can be very useful to you -- try not to kill him! Your dog will follow you --
+if you carry tripe rations, he will follow you even better. Sometimes he gets
+in your way. Either move around him, or wait (with the '.' command) until he
+moves. If you want him to follow you to the next dungeon level, he must be on
+a square next to you when you descend or ascend the stairs. Sometimes he gets
+hungry and confused and hits you. You can feed him by throwing food at him
+with the 't' command.
+
+Your dog may get mad at you if you move to a different dungeon level without
+taking him with you. Although he may not hit you, he won't help you either.
+You'll have to appease him somehow.
+
+Your dog is useful for his ability to fight and to pick up and carry objects.
+
+Of course, your dog can be male or female; it makes no difference in the game.
+
+The dungeon
+-----------
+
+The dungeon is a set of levels connected through stairways and trapdoors.
+Each level is an interconnected system of rooms and corridors. The rooms have
+doors that lead to the corridors. You must walk straight through a door -- no
+diagonals allowed. Some doors (and some corridors) are hidden and you must
+search for them (with the 's' command). Usually you must search several times,
+so use a repeat count (e.g. '5s'). Some rooms are special and have no doors or
+connecting corridors. There is a way to get in, though, but you will have to
+find out how on your own.
+
+The Wizard resides below the normal dungeon levels and can't be reached by
+only taking the stairs.
+
+Some rooms have special contents -- some are shops (but be aware that the
+shopkeeper expects payment (the 'p' command) for the items you get there) and
+some are zoos, full of interesting monsters. Some rooms are lit and you can
+see the entire room, and some rooms are dark so you can see only the floor
+near you.
+
+Monsters
+--------
+
+To fight monsters, move to occupy the same square they are in. You can also
+throw things at them, or zap them with wands. It is best to leave some
+monsters alone.
+
+Objects
+-------
+
+The objects you find may be enchanted (that's good) or cursed (that's bad) or
+normal. Cursed items are generally less effective than normal and also, once
+you have them on your body, they are impossible to remove unless you remove
+their curse.
+
+You use different objects in different ways:
+
+       )  WEAPONS are wielded ('w') or thrown ('t').
+          Some weapons are more effective when used together. For example, you
+          get more effect by wielding a bow before throwing arrows. 'w-' means
+          to wield nothing; i.e. be barehanded.
+
+       [  ARMOR is worn ('W') and taken off ('T').
+          You can wear more than one piece of armor, but there are some
+          restrictions on the combinations. For example, you can only wear one
+          suit of armor, but you can also wear an elven cloak over it.
+
+       !  POTIONS are quaffed ('q').
+
+       =  RINGS are put on ('P') and removed ('R').
+          You can only wear two rings at a time, one on each hand. Also,
+          wearing rings makes you use up more food, so use them sparingly.
+
+       /  WANDS are zapped ('z').
+          Some wands need a direction to be zapped in, but others do not.
+
+       ?  SCROLLS are read ('r').
+
+       (  TOOLS are applied ('A').
+          For example, to use a whistle, you apply it.
+
+Initially you will not know what the potions, rings, wands or scrolls do until
+you use them. They will have names like "XIXIXI". Some of these objects are
+identified as soon as you use them (for example, a scroll of light causes a
+dark room to be lit).
+
+Other objects have no noticeable effect. If it's not immediately obvious what
+a scroll or potion does the first time you use it, you may be asked to give it
+a name. Hack does this so that if you have an idea about what the object does
+you can name it something appropriate so the next time you find it you will
+know something about it. Whenever Hack asks for a name it is possible to use
+<Backspace> to erase the previous character and <Esc> to quit without
+supplying a name.
+
+Using some objects gives a message like "You have a strange feeling for a
+moment, but it passes". This means the object would have done something but
+couldn't do it now (for example, some scrolls affect your weapon, but if
+you're not wielding a weapon you'll get this message).
+
+If you want to name an individual object, use the name command '!'. To name
+all objects of a certain type, use the call command 'c'. For both commands
+Hack will prompt you for the inventory letter of the object you want to name
+or call. For example, if you put on a silver ring that has inventory letter
+'s' and notice that your strength increases by two, you might do this:
+  
+       'c' 's' 'strength' <Enter>
+            (call all objects with the same type as item 's' "strength")
+  
+       '!' 's' '+2' <Enter>
+            (call individual inventory item 's' "+2")
+  
+When you do an inventory you will see:
+  
+       s) a ring called strength named +2
+  
+The next time you pick up a silver ring it will be called strength so you will
+know what it does. However, you will not know if it will increase or decrease
+your strength! You will have to put it on to find out or you will have to
+identify it.
+
+Enchanting objects
+------------------
+
+If you enchant an object, it will be better than it was before. Enchanting
+armor changes your armor class by 1 (e.g. you could go from class 7 to class 6
+-- the less positive the number, the better the armor class. For weapons, the
+more positive the number, the better. Thus a +2 mace is better than a +1 mace.
+Some armor is better than others -- normal plate mail is better than normal
+ring mail. Some weapons are better than others, but factors such as experience
+and luck determine whether you can effectively use the better weapons.
+
+Identifying objects
+-------------------
+
+The scroll of identify will help you to identify many objects, but generally
+you just have to use them and see what happens. Occasionally a scroll of
+identify will have the ability to identify several objects, so it is to your
+advantage to have several unidentified objects before you use an identify
+scroll. When you read a scroll of identify Hack will ask you which classes of
+objects you want identified. If, for example, you choose rings and wands, then
+for each ring in your pack you will be asked if you want to identify it. After
+going through all the rings, you will be asked about the wands. If you do not
+identify any of these objects you will return to the question about which
+classes of objects you want identified.
+
+The effect of rings may not be obvious, and cursed rings can't be removed
+unless you remove their curse. Thus scrolls of identify are probably best used
+to identify rings.
+
+Scoring
+-------
+
+When the game ends, either by your death, when you quit, or if you escape from
+the cave, Hack will give you a score. The scoring is based on many aspects of
+your behavior but a rough estimate is obtained by taking the amount of gold
+you've found in the cave plus four times your real experience. Precious gems
+may be worth a lot of gold when brought to the exit. There is a 10% penalty
+for dying.
+
+What is "--More--"?
+-------------------
+
+Whenever there is a lot of information for you to see, Hack waits for you to
+read it all by giving you a "--More--". If the "--More--" is displayed on the
+normal response line (the top line that most messages are shown on), then Hack
+is waiting for you to type the <Space> or <Enter> key.
+
+If Hack has printed out a list of information (e.g. with the 'i' command),
+then Hack will accept <Space> or <Enter> as well as the inventory letter of
+anything in the list. Where is this useful? An example is when you want to
+quaff a potion but you can't remember the letter of the potion you want. If
+you type 'q' then '?', Hack will give you a list of all your potions
+followed by a "--More--" message. If you type <Space> or <Enter> you will
+return to the prompt about which potion you want to quaff. If you type the
+inventory letter of the potion, you will immediately quaff that potion.
+
+If the screen is completely cleared to give you information (e.g. you're
+looking at the help documentation with the '?' command), then there will be
+more than one screen full of information. In this case, <Space> or <Enter>
+means "show the next screen" and 'q' or <Esc> means "stop".
+
+Conclusion
+----------
+
+It may take hundreds of games before you discover all of Hack's secrets. The
+only way to win is to learn how to reach the Wizard's domain. It will not be
+easy, but with practice you might just be lucky enough to make it out of the
+Dungeon alive with the Amulet!

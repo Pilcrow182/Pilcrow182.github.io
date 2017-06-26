@@ -1,0 +1,138 @@
+==========
+1.3 -> 1.4
+==========
+
+-------
+Changes
+-------
+
+Menu command interface was added.
+
+Graphics functions were optimized.
+
+Removed "last_multi" so that "again" command always executes previous command
+only once. This is to prevent, for example, repeated prompts for the object
+and direction of the "throw" command after a count was used.
+
+When "pick up" command is used, and gold and one item are at player's
+location, pick up gold but ask before picking up item.
+
+During saved game playback no sound effects are played and dungeon now
+scrolls.
+
+Key selector is positioned so as to avoid obscuring current position of
+cursor.
+
+First byte of SRAM is skipped due to incompatibility with some hardware.
+
+----------
+Bugs fixed
+----------
+
+If you are levitating, and zap a wand of digging downwards, you'll still fall
+into the hole you make.
+
+Reading a scroll of food detection while you are confused is supposed to
+detect potions. What it actually does is detect potions, except that when
+counting the number of potions to show, it still counts food. This can cause
+problems when there are different numbers of potions and foods on the board.
+
+A scroll of destroy armor fails to operate on your shield.
+
+If you read a scroll of enchant weapon while confused, the program fails to
+check to see if you're actually wielding a weapon, which means that you can
+wield your armor and rustproof it with an enchant weapon scroll.
+
+Enchant or damage weapon, read while confused, fail to check for plural in
+stating what happens to the weapon.
+
+There doesn't seem to be any limit on how many hit points your pet can have.
+Therefore, the pet can get negative or zero hit points if it wraps around
+(past 127).
+
+Wielding a dead cockatrice is safe, even if you aren't wearing gloves. (Gloves
+are still required to safely pick one up, though, and you can't remove the
+gloves while wielding it.)
+
+Eating a dead bat sets confusion to 50, instead of adding 50. If you are very
+confused, eating the bat could conceivably reduce your confusion.
+
+When you wield a dead cockatrice against monsters, you are told that they turn
+to stone, but the monsters only leave normal corpses.
+
+A long worm that dies without leaving a corpse fails to print the worm tooth
+on the screen.
+
+If you eat a lump of royal jelly and it increases your strength but does
+nothing else that would change the status line, the program fails to update
+the status line.
+
+Doing an inventory of gold will produce the response "1 gold pieces" (instead
+of piece) if you only have 1.
+
+A cockatrice that hits another cockatrice turns it to stone. However, when
+you hit a cockatrice with a cockatrice corpse nothing happens.
+
+When you zap a wand of undead turning at a corpse to bring it back to life,
+the corpse doesn't get erased from the screen.
+
+A cancelled rust monster can still rust your helmet, though not your armor.
+A scorpion cannot be cancelled.
+
+If you are confused and read a scroll of fire, you are damaged by the scroll
+catching fire and burning your hands even if you are fire resistant.
+
+You are damaged by scrolls catching fire after being hit by dragon fire or
+bouncing wands of fire even if you are fire resistant.
+
+'M' character remains on SDOOR after mimic is killed.
+
+
+
+==========
+1.4 -> 1.5
+==========
+
+-------
+Changes
+-------
+
+Graphical tile mode was added (on by default).
+
+Sound effects were changed, and new ones were added.
+
+Cursor now wraps around at top and bottom of menus.
+
+----------
+Bugs fixed
+----------
+
+Lockup in xmore() caused by docrt() calling cls() calling more() calling
+xmore() infinitely because flags.toplin was set. Fixed by setting
+flags.toplin to 0 before calling docrt().
+
+
+
+==========
+1.5 -> 1.6
+==========
+
+-------
+Changes
+-------
+
+Progress bar was added and is displayed by default when restoring saved game.
+Visible playback can be toggled on/off by pressing A button. Visible playback
+can be slowed by holding down B button.
+
+levl[] was moved from EWRAM to IWRAM and data types of bitfields were adjusted
+to conserve memory.
+
+----------
+Bugs fixed
+----------
+
+Player tile was displayed as guard when u.ux,u.uy did not match '@' position.
+
+Dungeon offset did not follow cursor in getpos(). Previous bug prevented this
+from being fixed.
