@@ -1,0 +1,154 @@
+_____________________________________________________________________
+
+M4 (released 20060722)
+* Main
+  * Took out Visoly/F2A bankswitch reset code, as Visoly/F2A doesn't
+    dominate the user base nearly as much as it used to.  Reset now
+    properly exits to Multiboot Menu, GBA Movie Player, etc.
+  * Doesn't assume interrupts are disabled while starting up,
+    so it plays nicer with GBA Movie Player.
+  * Renamed to Lockjaw: The Overdose for less chance of trademark
+    violation.
+  * Main menu skips nonexistent Options.
+* Game engine
+  * Rotation states and wall kick match those of Tetramino
+    (homebrew for NES).
+* Graphics
+  * Added new VRAM address macros to initvram.c tile data loading
+    code, which should make it easier to understand and maintain.
+  * Changed blinking block effect to use one tile (0:5) instead of
+    32 (0:160-191, one for each palette color), changing its palette
+    entry (48) when setting the next pieces' palette entries.
+  * Quit changed to Exit to avoid confusion with Quiz.
+* Effects
+  * On game over, screen now fades to white, and stats fades
+    from white.
+  * Converted effects from weave interlacing of texture coordinates
+    (which was introduced in M2) to linear interpolated bob
+    interlacing.  Now the effect animation looks smoother on
+    progressive displays such as Game Boy Player and emulators.
+  * Took out scrolling and reduced scaling for the first 20 seconds.
+  * No longer increments game level on game over.
+* Mixer
+  * Mixer now disassembles mixbus sample vectors manually to avoid
+    pointer aliasing warnings.
+
+M3 (released 20030629)
+* Main
+  * Added reset option that actually works with PogoShell, both as
+    tod.gba and as tod.mb.
+  * Game loop now spins on vcount a lot less.
+* Tetanus
+  * Added "death mode" where pieces start out on top of existing
+    blocks (instead of in the air), and you have to slide them into
+    place before they lock.
+  * Changed slide-after-drop from 15 frames to 13 (non death mode)
+    or 25 (death mode)
+  * Changed piece fall rate after line clearing from 3 frames/line
+    to 2 frames/line.
+  * Reduced frame delays all around for more fluid game play.
+  * Sped up MarkSquares() significantly by skipping 4x4 regions
+    whose UL corner is connected to something above or to the left.
+    PLEASE TELL ME if squares that should form fail to form.
+  * Sped up CarbonFallOnce() for large empty regions.
+  * Beginning of smart-rotation code:  When rotating a piece into
+    a position that would overlap blocks, it now tries moving the
+    piece up one space.
+  * Plugged a few loopholes that let the player keep pieces alive
+    forever.  However, some remain to be plugged.
+* Graphics
+  * Switched from MFXJ Oberhumer's LZO to GBA's built-in LZSS codec
+    for more freedom in separately licensing TOD to publishers.
+  * Changed 'kaleid' backgrounds' dither pattern to be slightly
+    more compressible.
+* Effects
+  * Changed hgrcos() to use a table of u16s rather than u32s,
+    saving 2 KB.
+* Pause and Help
+  * In pause menu, added sleep option that keeps TOD in the GBA's
+    memory while drawing negligible current.
+* Music Engine
+  * Mixer is a couple times faster now; it mixes n voices in only
+    5 + 5n scanlines, less for non-looping or rarely-looping voices.
+  * Tempo changes are no longer delayed by one row.
+  * init_sound() now calls BIOS SetSoundBias() to work around a bug
+    in PogoShell 1.3's sound disabling code.
+  * Portamento and volume change effects added.
+  * Uses a different method to force mix buffer to a 4-byte boundary.
+* Music
+  * Changed GB sound to mono for more consistent instrument balance
+    on headphones vs. speakers.  Changed some volumes around to
+    compensate.
+* Documentation
+  * Added notice about what emulators other than VBA are missing.
+  * Added system requirements for game play under emulation.
+  * Explained new Death Mode.
+  * Began Q&A section.
+* Tools
+  * Made the build system work in one step, with MinGW ahead of
+    Devkit Advance in the path.
+  * Upgraded compiler toolchain to Devkit Advance R5 beta 3.
+  * Added LZSS compressor.
+  * Fixed a problem with the commonly available LZSS compressor,
+    where the compressed bytestream would illegally reference bytes
+    before the start of the decompressed data, causing corruption
+    of 0x00 or 0x20 runs during decompression.
+
+M2 (released 20020628)
+* Main
+  * moved play_tod() into its own function
+  * brought in new pin8gba.h with timers, ISRs, and more sound
+    definitions
+  * added multiplication by a fractional (between 0 and 1) number
+* Tetanus
+  * made the game keep track of how many singles, doubles, triples,
+    tet*ises, etc. the player makes
+  * changed slide-after-drop time to 15 frames (was 30) to
+    improve pacing
+  * added end modes: time trial and 150 dash
+  * used a dirty-rows system instead of draw/undraw to draw
+    tile-sprites such as the falling piece
+  * refactored figuring out where the piece will fall out of the
+    down key handling
+  * added an additional tile-sprite that displays where a piece will
+    land after an up keypress
+* Music Engine
+  * converted music engine to use files instead of hardcoded arrays
+  * added drum and bass samples to music
+* Music
+  * added music for stats screen
+* Statistics
+  * added display of singles, doubles, etc.
+* Graphics
+  * changed gameplay background to read the first 64 values from the
+    Rijndael S-box fuzzbase rather than computing 64 iterations of
+    slow-ass newlib rand()
+  * lightened the playfield background from 50% density to 25%
+  * removed the alpha blend on the playfield, as it wasn't noticeable
+    enough to warrant the performance hit on popular emulators
+  * Changed the default background to the third one (kaleid1) instead
+    of the one with the pot leaf
+* Effects
+  * switched from struct-of-arrays to array-of-structs
+    to free up more registers for the optimizer
+  * interlacing lets the effects run at 60fps instead of 30fps
+  * sped up centering around piece.  Now the game feels crisper.
+* Pause and Help
+  * removed empty "NeXT" column from pause screen
+  * changed the pause menu to be an actual menu
+* UI General
+  * added title screen menu for selecting end mode
+  * uncluttered the title screen
+  * made the copyright notice a subscreen of the Pin Eight logo
+    screen
+* Documentation
+  * added title screen menu and pause menu to manual
+  * added detail to game play
+  * added bug logging
+* Tools
+  * added gbafix (by darkfader)
+  * added 8gbmas (by damian yerrick)
+
+
+M1 (released 20020506)
+* initial release

@@ -1,0 +1,226 @@
+=== Issue Tracker ===
+
+RESOLVED:
+
+0001 (Tetanus): Fixed
+  refactor dropping the piece into
+    finding where the piece will land if dropped
+    placing the piece there
+0002 (Tetanus): Fixed
+  refactor erasing piece into
+  erasing things that are covered by tile-sprites
+0003 (Tetanus): Fixed
+  Add ghost piece using tile 0x88
+0004 (Effects): WONTFIX
+  Change to center and width architecture
+    Tried it, didn't provide much benefit over L/R.
+0005 (Effects): Fixed
+  Profile effects' CPU usage
+0006 (Effects): WONTFIX
+  If necessary, rewrite effects in assembly language
+    WONTFIX because even the most cpu intensive set of simultaneous
+    effects doesn't take near enough scanlines to overflow past
+    vblank.
+0009 (UI): Fixed
+  Switch BCD translator to use division by constant multiplication
+0011 (UI): Fixed
+  Add title screen menu with endless, 40 lines, 3 minutes
+0012 (UI): WONTFIX
+  Add short / long slides to options menu
+    Long slides affect the style of play too much to be a simple
+    option.  They're now governed by the choice of play style
+    (normal vs. Death Mode).
+0016 (Help): Fixed
+  Change pause into a menu rather than button-oriented
+0017 (Statistics): Fixed
+  Gradually rotate and shift the background
+0020 (Music Engine): Fixed
+  Add sample channel
+0030 (Effects): Fixed
+  work on every other scanline instead of every other frame
+0031 (Music): DUPLICATE of 0013
+  Add music menu
+0032 (Music): Fixed
+  Write music for "complete!"
+0033 (Music Engine): Fixed
+  Add note names to input language
+0037 (Graphics): Fixed
+  Ditch the alpha blended playfield; it doesn't help,
+  and it hurts performance on emulators.
+0038 (UI): Fixed
+  Title screen needs more explanation of the menu and a
+  copyright notice.
+0039 (Tetanus): WONTFIX
+  Add an animation for clearing lines
+    WONTFIX because more animation than a simple hilite of cleared
+    lines (what it does now) would either slow down the game (if done
+    within the m7 layer) or not be possible to calculate (if done
+    with sprites).
+0041 (Music Engine): Fixed
+  Add a sample channel for notes
+0045 (Music): Fixed
+  Add sound effects for common events
+0046 (Music Engine): Fixed
+  Add portamento
+0047 (Graphics): Fixed
+  Switch from LZO to GBA internal LZ77
+0048 (Music Engine): Fixed
+  Optimize mixer
+0049 (Build Tools): Fixed
+  Streamline makefile per
+  http://groups.yahoo.com/group/gbadev/message/13227
+0050 (Tetanus): Fixed
+  Rotation exploit: |: u b u a :| keeps piece in air
+0051 (Tetanus): Fixed
+  Add death mode
+0052 (UI): Fixed
+  Add UI to select death mode
+0053 (UI): WONTFIX
+  Exit doesn't go back to the shell on Visoly carts.  Use the
+  reset command of Multiboot Menu or PogoShell.
+0057 (Effects): Fixed
+  Reduce hgrcos.inc from u32 to u16 (translate 0 to 65536 below
+  phi=45deg)
+0059 (Music Engine): Fixed
+  Investigate periodic mixer dropouts (at 30 Hz) which turned out to
+  be misalignment of mixbuf[]
+0060 (Graphics): Fixed
+  Clearing a line that completely clears the playfield (possibly any
+  clear without falling) makes a hole in the pf background.
+  (If the problem was in ClearOutCleared(), then it's fixed now.)
+
+
+NEW:
+
+0007 (Effects): 
+  Balance effects
+0008 (Effects): Future
+  Investigate lighting schemes
+0010 (UI):
+  Add options menu
+0013 (UI): 0010 0023
+  Add background music to game menu
+0014 (Help): Future
+  Learn Esperanto
+0015 (Help): 0014 Future
+  Translate all game text to Esperanto
+0018 (UI):
+  Implement text entry
+0019 (Statistics): 0018
+  Implement score saving
+0021 (Music Engine):
+  Add step channel
+0022 (Effects): 0021
+  Pick up effects from step channel instead of hardcoded array
+0023 (Music): 0022 0046
+  Write 8gbm tunes
+0024 (TOD General): 0056 Future
+  Isolate GBA dependency from game logic
+0025 (Backgrounds):
+  Draw more backgrounds
+0026 (Backgrounds):
+  Create cart build and multiboot build
+0027 (Documentation): ONGOING
+  Document all new build features in README.txt
+0028 (Documentation): ONGOING
+  make sure all copyright notices are in order
+0029 (Tetanus):
+  Add demo games
+0034 (Music Engine):
+  Add e, e., q, q., h, h., w suffixes that add a 'h' of
+  1, 2, 3, 5, 7, 11, 15 to n, r, and h
+0035 (Documentation):
+  comment the code
+0036 (Effects):
+  when you start a new level, say "nth dose"
+0040 (Tetanus):
+  Add an animation for making Blocks
+0042 (Build Tools): ONGOING
+  Make sure all needed tools are in ./tools
+0043 (Build Tools): 0042 ONGOING
+  Add this build's new files to zip.in
+0044 (TOD General): 0027 0043 ONGOING
+  Package each milestone
+0054 (Graphics):
+  Switch backgrounds every 10,000 points and remove menu option
+0055 (UI): 0054
+  Simplify UI, making decisions automatically as necessary
+0056 (Music Engine): Future
+  Make software emulator of GB sound channels
+0058 (Tetanus):
+  Plug the repeated-spin loophole once and for all
+0061 (Graphics):
+  Fade out background as the first thing in the first 64 frames of
+  the "game over" animation.
+0062 (UI):
+  Switch to new menu system
+0063 (Tetanus):
+  Fractional fall times, so that there isn't a huge speed jump at 167 lines
+0064 (Tetanus):
+  Only break Blocks that are over holes
+  
+
+
+implemented effects:
+  Level 1
+    scaling
+    z axis rotation
+  Level 2
+    x axis rotation  (to save battery, this is used only when necessary)
+    random displacement
+  Level 3
+    linear displacement
+    cubic displacement
+  Level 4
+    quadratic displacement
+    constant displacement
+unimplemented effects:
+  sinusoid shift
+  aspect ratio modification  (obsoleted by rot + linear)
+  disco lighting
+  constant rotation offset
+
+
+pre-game options
+______________________________
+
+ TOD : OPTIONS
+
+
+ > MUSIC                IDLTD
+
+   ERASE SRAM DATA
+
+   OK
+
+
+
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+Cart build vs. MB build
+
+Backgrounds
+  420
+  Enjoy Cocaine
+  Kaleido-tunnel
+  Kaleido-spiral (Cart only)
+  NORML (Cart only)
+  Pulling (Cart only)
+Music
+  IDLTD
+  Kalinka  
+  Korobeyniki
+  Arabesque (Cart only)
+
+What is left out of the smaller multiboot build is subject to change.

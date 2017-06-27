@@ -19,6 +19,9 @@ var games = {
     "agb_hack":"AGB Hack",
     "agb_rogue":"AGB Rogue",
     "anguna":"Anguna",
+    "chips_advance":"Chip's Advance"
+    "lockjaw":"Lockjaw: The Overdose"
+    "luminesweeper":"Luminesweeper"
     "powder":"Powder"
 };
 var Iodine = null;
