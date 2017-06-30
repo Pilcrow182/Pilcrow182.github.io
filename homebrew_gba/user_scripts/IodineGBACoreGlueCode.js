@@ -19,10 +19,11 @@ var games = {
     "agb_hack":"AGB Hack",
     "agb_rogue":"AGB Rogue",
     "anguna":"Anguna",
+    "beerjeweled":"Beerjeweled",
     "lockjaw":"Lockjaw: The Overdose",
     "luminesweeper":"Luminesweeper",
     "powder":"Powder",
-    "sssa":"Super Star Shooter Advance",
+    "sssa":"Super Star Shooter Advance"
 };
 var Iodine = null;
 var Blitter = null;

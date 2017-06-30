@@ -22,6 +22,8 @@ AGB Rogue                  -- https://sites.google.com/site/donnierussellii/gba-
 
 Anguna                     -- http://www.tolberts.net/anguna
 
+Beerjeweled                -- http://www.pouet.net/prod.php?which=61745
+
 Lockjaw: The Overdose      -- http://web.archive.org/web/2011/http://www.pineight.com/tod
 
 Luminesweeper              -- http://pineight.com/lu/
