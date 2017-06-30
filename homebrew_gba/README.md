@@ -16,14 +16,16 @@ https://github.com/Nebuleon/ReGBA
 
 # Homebrew roms taken from:
 
-AGB Hack:      https://sites.google.com/site/donnierussellii/gba-games
+AGB Hack                   -- https://sites.google.com/site/donnierussellii/gba-games
 
-AGB Rogue:     https://sites.google.com/site/donnierussellii/gba-games
+AGB Rogue                  -- https://sites.google.com/site/donnierussellii/gba-games
 
-Anguna:        http://www.tolberts.net/anguna
+Anguna                     -- http://www.tolberts.net/anguna
 
-Lockjaw:       http://web.archive.org/web/2011/http://www.pineight.com/tod
+Lockjaw: The Overdose      -- http://web.archive.org/web/2011/http://www.pineight.com/tod
 
-Luminesweeper: http://pineight.com/lu/
+Luminesweeper              -- http://pineight.com/lu/
 
-Powder:        http://www.zincland.com/powder
+Powder                     -- http://www.zincland.com/powder
+
+Super Star Shooter Advance -- http://www10.big.or.jp/~and/gba/devold00.html

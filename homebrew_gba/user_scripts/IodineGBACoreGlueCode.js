@@ -21,7 +21,8 @@ var games = {
     "anguna":"Anguna",
     "lockjaw":"Lockjaw: The Overdose",
     "luminesweeper":"Luminesweeper",
-    "powder":"Powder"
+    "powder":"Powder",
+    "sssa":"Super Star Shooter Advance",
 };
 var Iodine = null;
 var Blitter = null;
