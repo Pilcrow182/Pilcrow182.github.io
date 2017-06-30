@@ -17,7 +17,7 @@ var keyZones = [
                 //Select:
                 [16],
                 //Start:
-                [13],
+                [13, 32],
                 //Right:
                 [39, 76],
                 //Left:
