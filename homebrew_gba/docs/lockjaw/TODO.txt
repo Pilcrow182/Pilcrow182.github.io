@@ -1,0 +1,13 @@
+As of LOCKJAW 0.42, TODO.txt is being migrated to a bug list format;
+see BUGS.txt.  Not yet migrated:
+
+cdsboy wants:
+  * DTET rush mode (please describe this in detail)
+  * DTET lives (please describe this in detail)
+  * Editable game keys presets (please describe the UI)
+
+DIGITAL wants:
+  * Ability to switch tetromino colors in game (huh?)
+  
+Zed0 wants:
+  * Tetrinet client

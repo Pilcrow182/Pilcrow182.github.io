@@ -1,0 +1,906 @@
+bug 0001: Dual Marathon gimmick
+
+The keys control both a platform game (in the top window) and a
+tetromino stacking game (in the bottom window).  If you die on
+either window, you lose.
+
+
+bug 0002: Customizable top out behavior
+Parity: Tetris (NES), freepuzzlearena
+
+A rule can dictate that "top out" occurs when the following happens:
+* Overlap or lock out: Entry overlapping blocks, or lock entirely
+  above ceiling (current behavior)
+* Partial lock out: Lock with any block above ceiling
+* Garbage out: Entry with any block above ceiling
+* Loose block out: Lock overlapping blocks; block can be shifted
+  out of the way in some cases (like Tetris for NES)
+
+
+bug 0003: Mode 7 style blitter for PC
+Platform: PC
+Parity: TOD
+
+Extend blitField(LJView *) to scale and rotate the field as it's
+being copied to the screen.
+
+
+bug 0004: Mode 7 style blitter for GBA and DS
+Platform: GBA
+
+Extend blitField(LJView *) to calculate scaling and rotation factors
+for each scanline, and extend other functions to start DMA.
+
+
+bug 0005: Port Lockjaw: The Overdose (TOD)
+Requires: 0002, 0003, 0004
+Parity: TOD
+
+TOD used Carbon Engine.  I want to migrate away from Carbon Engine.
+
+
+bug 0006: Ridin' Spinners
+Requires: 0003, 0004
+SRS and Infinity are turned on.  If you abuse lock delay, or you make
+a "spin triple" twist, the screen begins to spin, and the music
+changes to a cover of "Ridin' Spinners" by Three 6 Mafia.
+
+
+bug 0007: Improve Items gimmick
+Requires: 0008
+Votes: Caithness
+Parity: Tetris DS
+
+Give only one item at a time in the early stages.
+
+
+bug 0008: Prerotated next queue
+Parity: Tetris DS
+
+Store the orientation of each piece in the next queue.
+
+
+bug 0009: TDS 4-player worldwide simulation
+Parity: Tetris DS
+
+3/4 of the time you start it, it will play annoying music for
+two minutes, give an 86420 error, and quit. The rest of the
+time, it will play annoying music for between 15 seconds and
+two minutes and then switch to Items gimmick.
+
+
+bug 0010: Colored blocks
+Parity: freepuzzlearena
+
+In active, hold, and next, have each block store its color.
+
+
+bug 0011: H&R Blocks scoring method
+Parity: freepuzzlearena
+
+First spotted in freepuzzlearena Tetanus.  Each piece is either
+entirely dark or entirely light.  A line of all dark or all light
+scores as 2 lines.  Score for n lines with one piece is n*(n+1)*50.
+
+
+bug 0012: Two physical keys per vkey
+Platform: PC
+
+Allow the player to set more than one key that operates a given,
+game function, like StepMania does.
+
+
+bug 0013: Two-player mode
+Parity: freepuzzlearena
+
+Allow two players to play at once, and allow garbage to be sent back
+and forth.
+
+
+bug 0014: Store and display assertion text
+
+Lockjaw Engine has ljassert().  If an assertion fails, have some way
+for front-ends to retrieve the text.
+
+
+bug 0015: Rotation system should be array of structs
+
+A single struct should describe all aspects of a rotation system.
+The descriptions in wktables.c should be an array of structs, not
+struct of arrays.  While you're at it, extend the kick tables
+from 5 to 8 positions.
+
+
+bug 0016: Rotation system editor
+Platform: PC
+Requires: 0015
+Votes: Needle, DIGITAL, (RA) Red Star, jujube, fnord
+
+Before developing Lockjaw Engine, I described Wall Kick Explorer, an
+editor for rotation systems.  Make this.
+* initial shift and orientation of each piece
+* kick tables for +90deg and +270deg
+
+<tepples>
+0.44 inverts rotation systems into a format that a loader might be
+able to produce.
+
+
+bug 0017: Adjustable window size
+Votes: Bloodstar
+Resolution: Fixed in 0.42
+
+The skin should control the screen resolution or the size of the
+window.  This would make camstudio recording on older PCs feasible.
+
+
+bug 0018: Store keypress count in .ljm
+
+Replays should store the number of keypresses, so that Baboo! result
+screens are correct.
+
+
+bug 0019: Start recording .ljm only during ARE
+
+It would probably simplify the code to start a replay only during
+entry delay.  This would also allow playback to become slightly
+more resilient to game engine changes, as the viewer would at least
+be able to view block placements.
+
+
+bug 0020: Option for fractional row kick
+Parity: Tetris DX
+
+Right now, a floor kick will move a piece by the minimal amount
+needed to place a block in the correct row.  This means downward
+kicks move to the top of the row, and upward kicks move to the bottom
+and immediately start lock delay.  Other games don't do this.
+To simulate Tetris DX properly, we need a new option:
+
+Fractional floor kick
+  Unchanged
+> Minimal move (current behavior)
+  Move to top (Tetris DX behavior)
+
+
+bug 0021: Double buffer entire screen
+Platform: PC
+Votes: 4matsy
+
+On some video cards, the score flashes.  Double buffering the entire
+screen, not just the well, would fix this.
+
+
+bug 0022: Automatic exit on Vista
+Platform: PC
+Resolution: Fixed in 0.42
+
+One machine running Windows Vista had Esc perform an immediate exit
+rather than a pause > exit.
+
+<tepples>
+Might it have been caused by vsync() returning immediately?
+If so, 0.42 fixes that.
+
+
+bug 0023: Draw internal preview without clipping to well edge
+Requires: 0020
+Votes: 4matsy
+
+Internal preview should extend outside the well if the piece is close
+enough to the wall.
+
+
+bug 0024: Improve garbage options
+Votes: Bloodstar, Lardarse
+Parity: Tetris (NES)
+
+Add option for garbage density, especially for B-type
+
+Garbage density
+  Half
+  Two holes
+> One hole
+
+Add option for garbage randomness (1-100)
+
+
+bug 0025: Internet play
+Requires: 0013
+Votes: Bloodstar
+Parity: Tetris DS
+
+Allow sending garbage over the Internet.
+
+
+bug 0026: FreeType font support
+Platform: PC
+Votes: Bloodstar
+
+Use TrueType fonts instead of bitmapped fonts.
+
+
+bug 0027: AVI export
+Platform: PC
+Votes: Bloodstar
+Parity: Tetris (NES) in emulation
+
+FCE Ultra and Nestopia can convert a replay to an AVI.
+Lockjaw should too.
+
+
+bug 0028: Game_Music_Emu music support
+Platform: PC
+Votes: Bloodstar
+Parity: Tetris (NES) in emulation
+
+I'd like to play nsf/sid/spc music without having to
+convert it to .ogg first.
+
+
+bug 0029: Height-sensitive music
+Platform: PC
+Votes: Bloodstar
+Parity: Tetris (NES), Tetris (GB)
+
+Tetris DX changes the music when the stack surpasses a certain
+height.  Lockjaw should too.
+
+
+bug 0030: Music on GBA
+Platform: GBA
+Votes: Bloodstar
+Parity: TOD
+
+GBA has sound effects.  I'd like some sort of music too.  Pimpmobile?
+
+
+bug 0031: Debrief on handhelds
+Platform: GBA, DS
+Votes: Bloodstar, zzo38computer
+Resolution: Fixed in 0.43
+
+PC has a result screen.  I want this on GBA and DS
+
+<tepples>
+Fixed in 0.42 for DS.  To get this onto the GBA, we'd have to
+eliminate three lines of text from the result screen.
+
+<tepples>
+kesiev gave me a few ideas of how I could slim it down.  Fixing.
+
+
+bug 0032: Baboo! should force infinite lock delay
+Votes: caffeine
+
+right now, Baboo! is defined by use of 0g.  it should be
+infinite lock delay instead.
+
+<tepples>
+Why?  It would add an extra keystroke to Zangi-moves.
+
+
+bug 0033: Move all skin-related files to a folder
+Platform: PC
+Votes: caffeine
+Resolution: Fixed in 0.43
+
+Skin-related files should be kept together in the folder "skin".
+
+
+bug 0034: Configure console buttons
+Platform: PC
+Votes: caffeine, 4matsy
+Parity: StepMania
+
+Escape to pause, [ to record, ] to play should be configurable.
+
+<tepples>
+4matsy said that MenuUp, MenuDown, MenuLeft, MenuRight,
+MenuStart, and MenuBack also being configurable might help.
+
+
+bug 0035: skip ready go and game over animations
+Votes: caffeine
+
+I like to kill and restart games when I make one little mistake,
+and startingAnimation and gameOverAnimation slow me down.
+I want to skip them, even though each is less than 2 seconds.
+
+
+bug 0036: Skip to mistakes
+Platform: PC
+Votes: caffeine
+
+While watching a replay, I want to skip to a piece that increases
+the number of holes or whose active time is greater than three
+times the average.
+
+
+bug 0037: Hide active times in results
+Votes: caffeine
+
+The Quadra-style "active time" statistics confuse me.  I want to
+see stats based on wall time only.
+
+
+bug 0038: Result time unit
+Votes: caffeine
+
+I'd like to control whether statistics are expressed per minute
+or per second.
+
+<tepples>
+Why?  DDR is measured in beats per minute, and gasoline engine speed
+is measured in revolutions per minute.
+
+
+bug 0039: More garbage options
+Votes: Caithness
+
+I want more realistic garbage.
+
+<tepples>
+In what way?
+
+
+bug 0040: Custom speed curves
+Votes: Caithness, caffeine, Ezzelin, zzo38computer, DIGITAL, mushroom
+
+Let the user modify speed curves: for example, user should be
+able to make rhythm speed up slower
+
+<tepples>
+0.45 introduces a new speed curve format
+
+
+bug 0041: Saved rule sets
+Votes: Needle, kotetsu213, jujube, DIGITAL, Rich Nagel, Deets
+Votes: Kukuunen
+Parity: Tetris Worlds, Heboris
+
+Let the user create sets of options that override the user's
+current options, and replace the gimmick selection screen
+with preset selection.
+
+<tepples>
+0.42 adds scenario support for the PC.  A scenario editor and
+scenario support for handhelds will have to wait.
+
+
+bug 0042: Release Lockjaw XLII
+Requires: 0041
+
+Lockjaw 0.42 won't be released until noticeable progress is made
+on these issues.
+
+<tepples>
+As of Monday, January 28, 2008, scenario support is in, so Lockjaw
+will be released the morning before the Super Bowl.
+
+
+bug 0043: More rotation systems
+Requires: 0016
+Votes: herc
+
+Once the rotation system editor is in place, create these:
+* Flat-up SRS
+
+
+bug 0044: Vanish zone
+Platform: PC
+Votes: DIGITAL
+
+The skin should allow showing the vanish zone.
+
+
+bug 0045: Handheld skin support
+Platform: GBA
+Votes: Dood77, matt_hatter83
+Parity: TOD 
+
+GBA and DS should have skins too.
+
+
+bug 0046: Pussy 20G
+Votes: herc, DIGITAL
+
+Option for moving a piece up 1 cell when shifting it,
+counting it as a floor kick.
+
+
+bug 0047: Pentominoes
+Votes: Dood77, jujube, colour_thief, Lardarse
+Parity: Bombliss
+
+Add the 5-block pieces.
+
+
+bug 0048: Bastet randomizer
+Votes: zzo38computer
+Parity: Abandoned Blocks
+
+In bastet, AI plays each possible next piece in each
+possible position and gives one of the worst 3.
+
+
+bug 0049: lj-contrib as skins
+Platform: PC
+Votes: Rich Nagel
+
+lj-contrib was written before .skin files were done.
+
+
+bug 0050: Next above shadow (faint)
+Platform: PC
+Votes: cdsboy
+
+Draw next above shadow, but draw it semitransparent.
+
+
+bug 0051: Separate keys for initial actions
+Votes: DIGITAL
+
+I like initial actions, but not ARE.  Can I get separate
+keys to perform initial actions on the next piece before
+this one locks down?
+
+
+bug 0052: Speed graph in debrief
+Platform: PC
+Votes: Cubicz
+Parity: StepMania
+
+Screen 1 is results.  Screen 2 is settings.
+Why not put a speed graph on screen 3?
+
+
+bug 0053: High score table
+Requires: 0041
+Votes: Cubicz, Ezzelin, Rich Nagel, Kuukunen
+
+For each ruleset, keep the highest scores achieved on that
+ruleset.
+
+
+bug 0054: Disable ljconn
+Platform: PC
+Votes: kotetsu213, Needle
+Parity: Tetris The Grand Master, The New Tetris
+
+The skin should be able to turn off ljconn for falling pieces
+(as opposed to blocks in the stack).  That would improve
+accuracy of TNT and TGM simulation.
+
+
+bug 0055: Skin control for sound effects
+Platform: PC
+Votes: Cubicz, Needle
+Parity: Lumines
+
+Allow skins to specify a .dat file or set of .wav files used
+for sound effects.
+
+
+bug 0056: Bleep gimmick
+Votes: Lardarse
+
+Player must clear row 1, 2, 1, 3, 1, 4, 1, 5, 1, ..., 20, 1.
+
+
+bug 0057: Bravo
+Votes: Lardarse
+Parity: Luminesweeper
+
+Several other falling block games display "BRAVO!" or another similar
+message when there are no blocks left in the well after a line clear,
+and award lots of bonus points.  Detect and score for this situation.
+
+
+bug 0058: Vs. Elite garbage
+Votes: PetitPrince
+
+you get 7 garbages after random(1,7) seconds, then random(3,5)
+garbage every random (5,20) seconds
+
+
+bug 0059: Wall kick control for IRS
+Votes: jagorochi
+Parity: TGM
+
+In TGM, initial rotation does not perform kicks.
+Change the IRS option:
+
+Initial rotation 
+  Off: do not IRS (current behavior)
+  On, no kick: if collision, fail
+> On: if collision, try wall kick (current behavior)
+
+<tepples>
+0.43 disallows IRS kick entirely, changing the current behavior
+from "On" to "On, no kick", by adding a new argument to
+doRotateLeft and doRotateRight.  The change to this option (search
+for !isFirstFrame) could be used to implement this option.
+
+
+bug 0060: Menu background
+Platform: PC
+Votes: lvankeulen, Kuukunen
+Parity: Tetris (NES)
+
+The skin should specify a background image to be drawn behind
+the menu text.
+
+
+bug 0061: Frame stepping
+Platform: PC
+Votes: jagorochi
+Parity: Tetris (NES) in emulation
+
+To check the event loop for off-by-one errors that affect
+accuracy against other games, it would be useful to be able
+to step the game engine forward by one frame at a time.
+
+
+bug 0062: Replay stepping by piece
+Platform: PC
+Votes: Lardarse
+
+Pause demo playback (with well still visible) with hold button;
+advance to next lock with rotate button
+
+
+bug 0063: Option for goal
+Votes: Lardarse, caffeine, Rosti LFC, fnord, M.Bison
+
+Separate goal and countdown code out of gimmicks into an option,
+controlled by LJField::goalType.  Goals include none, lines,
+level, score, time, and keys, which activate comparisons against
+goalCount.  This would obsolete many gimmicks.
+
+
+bug 0064: Fill in missing sound effects on handhelds
+Platform: GBA, DS
+Votes: Lardarse
+
+These sounds are missing:
+GBA: Ready, go, countdown
+DS: Ready, go, lose, distinct countdown
+
+<tepples>
+0.42 adds "lose" on DS
+
+
+bug 0065: Bombliss game mode
+Requires: 0010
+Votes: Joshua
+Parity: Bombliss
+
+When game mode is set to Bombliss, line clears no longer remove
+lines from the field.  Instead, one block of each piece is
+colored differently and explodes, removing blocks, when in a
+line clear.
+
+
+bug 0066: Dr. Mario clone
+Requires: 0010
+Votes: Lardarse
+Parity: freepuzzlearena
+
+You made Vitamins. Can you make domino rotation, color matching,
+and floating garbage with fast DAS, IRS, and 20G?
+
+
+bug 0067: Puyo clone
+Requires: 0010
+Votes: Lardarse
+Parity: freepuzzlearena
+
+You made a puyo clone in FPA. Can you port it to LJ?
+
+
+bug 0068: Preload hold piece
+Votes: Lardarse
+
+Option to load a specific piece (such as I or T) into the hold box
+at game start.
+
+
+bug 0069: Bag with good start
+Votes: Rosti LFC
+Parity: Tetris The Grand Master ACE
+
+Randomizer should always give a "preferred piece" (e.g. I, J, L, T)
+first, like history does.
+
+
+bug 0070: Small skins shouldn't hide the score
+Votes: Rich Nagel
+Platform: PC
+
+Make wiki.skin (and other small-blkW skins) not hide the score
+
+
+bug 0071: Preview at left
+Votes: DIGITAL
+Platform: PC
+
+Skin should specify that the vertical preview ("Next at right")
+can be moved to the left side of the playfield.
+
+
+bug 0072: Volume for sfx
+Votes: DIGITAL
+Platform: PC
+
+Skin should specify volume for sound effects, as it does for music.
+
+
+bug 0073: Make PC use GBA options
+Votes: jujube
+Platform: PC
+Resolution: Fixed in 0.43
+
+Move non-GBA/DS specific code from gbaopt.c to options.c,
+then take out everything in old_pc_options.c that isn't
+load, save, or LJPCView related
+
+<tepples>
+0.42 takes some steps in this direction.
+
+
+bug 0074: Macro editor
+Votes: deepdorp
+
+Make the actions performed by the macro vkeys editable.
+
+
+bug 0075: Pattern randomizer
+Votes: Rich Nagel
+
+Allow the player to define a piece sequence, such as the Sega
+power-on pattern, and deal that.  It could replace iCheat(tm).
+
+
+bug 0076: Skin should vary per section
+Votes: Needle, Rich Nagel, DIGITAL
+Parity: freepuzzlearena, Luminesweeper
+
+For speed curves that have sections, it should be possible for a
+skin to specify a background image and music for each section.
+
+<Rich Nagel>
+Option to load all skin files before the game starts, so as not to
+make an unpredictable ARE at the start of a section.
+
+
+bug 0077: Define conditions that trigger initial drop
+Votes: Needle
+Parity: Tetris The Absolute The Grand Master 2 PLUS
+
+In TAP, initial hard drop and initial soft drop don't get turned on
+in Master 900+ or in Death 0+.  Find an appropriate rule for whether
+to do initial hard drop, and document it.
+
+
+bug 0078: Set random seed
+Votes: Rich Nagel, colour_thief, Lardarse
+Parity: FreeCell
+
+For competition purposes, it should be possible to seed the
+randomizer to a constant value.  Note that this differs from the
+"power on pattern" proposal of bug 0075.
+
+
+bug 0079: Customizable speedometer sample window
+Votes: matt_hatter83
+
+The speedometer uses a sliding window of 10 pieces.  Can one make it
+shorter in options?
+
+
+bug 0080: Portrait monitor support
+Votes: PetitPrince
+
+Skin setting to rotate the entire playfield by 90 degrees.
+
+
+bug 0081: DTET rotation system
+Requires: 0015
+Votes: cdsboy, caffeine, fnord
+Parity: DTET
+
+Implement the rotation system of DTET, as described on the wiki.
+This includes a third set of wall kick tables for each piece in each
+rotation system for +180 (in addition to existing +90 and +270).
+
+
+bug 0082: Paged options on PC
+Votes: Cubicz
+Resolution: Fixed in 0.43
+
+Break the PC options menu into pages like it is on the handhelds.
+
+
+bug 0083: Undo
+Votes: Kuukunen
+
+Press a button to take back one drop.  Useful for training.
+
+
+bug 0084: Manual entry delay
+Votes: Kuukunen
+
+Pause after each piece with game displayed.  Press a button to
+resume.  Useful for training.
+
+
+bug 0085: Forward progress lock delay reset
+Votes: zaphod77
+
+Keep track of the lowest space that this piece has fallen to.
+A floor kick should never reset lock delay, and only a net
+downward movement below where it was when the lock delay was
+last reset should reset lock delay.
+
+
+bug 0086: Carbon Engine style lock delay reset
+Parity: TOD
+
+Carbon Engine implemented lock delay as follows:  When a piece
+rotates or shifts from landed to falling, recharge one row's
+worth of lock delay for each row that the piece moves down.
+
+To implement this in Lockjaw Engine, move the piece down by
+(lockDelay - stateTime).  If the piece is less than
+(lockDelay - stateTime) * gravity above the shadow, only add
+(y - shadowY) / gravity to stateTime.
+
+
+bug 0087: Blackjack randomizer framework
+Votes: Lardarse
+
+Lardarse and tepples described a language for describing randomizers
+on tetrisconcept.com's wiki.  It is called Blackjack.
+
+
+bug 0088: Option for piece color
+Votes: Lardarse
+Requires: 0010
+
+Once we have colors per block, add an option for piece colors,
+which might replace the ljconnSRS vs. ljconnSega divide.
+Skins would always be in Guideline order.
+
+> Set by rotation system (current behavior)
+  SRS
+  Sega
+  Dualism (formerly H&R)
+  Shuffle (randomize at game start)
+  Super Shuffle (randomize every piece)
+
+
+bug 0089: Long debrief lines are clipped
+Requires: 0031
+Votes: Lardarse, kesiev
+Resolution: Fixed in 0.43
+
+The DS doesn't have a small font, so any debrief line longer than
+about 48 characters will get clipped.  But in order to make this
+line shorter, I need to move things around anyway.
+
+
+bug 0089: Merge preliminary GNU/Linux support
+Requires: 0091
+Votes: kesiev
+Resolution: Fixed in 0.43
+
+kesiev wrote a patch to let Lockjaw work with separate read-only
+and read-write folders, as is often the case in GNU/Linux.
+Merge these changes.
+
+<tepples>
+kesiev's patch adds a function called 'turnslash' that turns '\' into
+'/' in all path names.  In fact, I can use this on all platforms:
+Mac and Linux use '/' as the native path separator, and the Windows
+API accepts it even if some legacy command-line programs do not.
+
+LJVorbis_close: I must have missed that line in the ov_clear
+documentation.
+
+
+bug 0090: Process IRS before checking for block out
+Votes: Kitaru
+Parity: TGM series
+Resolution: Fixed in 0.43
+
+TGM allows the player to IRS out of a block out situation.  So don't check for block out on the last frame of NEW_PIECE. Instead, check at
+the end of the first frame (LJSND_SPAWN|LJSND_HOLD) of FALLING_PIECE.
+
+
+bug 0091: Read-only vs. read-write directories
+Votes: Ezzelin, kesiev
+Resolution: Fixed in 0.43
+
+Lockjaw for PC currently runs as a "portable application".  But it
+should support being installed in the same way as any other program
+for Windows or Linux.  If an empty file called "installed" is in the
+same folder as argv[0], switch to installed mode.
+
+Installed mode ignores the working directory when loading .dat,
+.skin, .ini, etc.  Instead, it loads from the save data folder
+($HOME/.lockjaw on Linux; %APPDATA%/Pin Eight/Lockjaw on Windows)
+and then from the folder that contains argv[0].
+
+The program would usually be installed to /opt/Lockjaw under Linux
+or %ProgramFiles%/Lockjaw under Windows.
+
+
+bug 0092: Option to limit IRS to 90 degrees
+Votes: jujube
+Parity: TGM series
+
+Rotation limit
+  90 degrees
+> Unlimited (current behavior)
+
+And make Master and Death use 90 degrees.
+
+
+bug 0093: Option to disable instant shifting
+Parity: TGM series
+
+Add an option only to scenarios that limits shifting to 1G,
+disallowing cheating with far left, far right, DAS=Instant.
+
+
+bug 0094: World reverse
+Votes: jujube
+Parity: Ti
+
+Option in Game Keys to reverse rotation directions when playing
+rotation systems that start the T flat-down (SRS, TOD M4).
+
+
+bug 0095: Move mouse pointer out of the way
+Votes: jujube
+Resolution: Fixed in 0.43
+
+Some players navigate Lockjaw for PC entirely with the keyboard.
+For these people, the mouse gets in the way after it has been used
+in Replay or Skin (or, soon, Options and Game Keys).  Drop it to
+the bottom of the window when the player goes to a screen that
+doesn't use the mouse.
+
+
+bug 0096: Allow options to "underride" skin settings
+Votes: Rich Nagel
+
+Allow the user to change shift sound scale, next piece position,
+playfield position, as it was in 0.41.  The game would use the
+skin setting, or the user setting only if the skin does not specify.
+
+
+bug 0097: Package as Windows installer
+Requires: 0091
+
+Package the Windows executable as an installer that automatically
+puts itself in %ProgramFiles%/Lockjaw.
+
+
+bug 0098: Reactive speed curve and scoring
+URL: http://www.jenovachen.com/flowingames/flowtheory.htm
+Votes: herc
+
+Start with zero speed.  Track the player's speed using the existing
+speedometer code.  Then once the player has dropped a few pieces,
+start scaling up the delays and such so that entry + (20/gravity) +
+lock delay equals the average time that the player took to place 
+a piece.  Then multiply all line clear scores by the current speed.
+
+
+bug 0100: Import old bugs
+Parity: bugzilla.mozilla.org
+
+Bring some order to the old 'todo.txt' enhancement list.
+

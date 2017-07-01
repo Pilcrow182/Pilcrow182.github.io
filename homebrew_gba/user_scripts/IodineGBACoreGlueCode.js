@@ -20,7 +20,8 @@ var games = {
     "agb_rogue":"AGB Rogue",
     "anguna":"Anguna",
     "beerjeweled":"Beerjeweled",
-    "lockjaw":"Lockjaw: The Overdose",
+    "lockjaw":"Lockjaw",
+    "lockjaw_tod":"Lockjaw: The Overdose",
     "luminesweeper":"Luminesweeper",
     "powder":"Powder",
     "sssa":"Super Star Shooter Advance"
