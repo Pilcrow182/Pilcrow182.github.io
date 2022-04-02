@@ -1,0 +1,632 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Endless Sky Energy Generators</title>
+
+		<style>
+			#MyTable{
+				border: 1px solid black;
+			}
+			#MyTable td{
+				border: 1px solid black;
+				padding: 3px;
+			}
+		</style>
+
+		<script src='libs/sorttable.js'></script>
+	</head>
+
+	<body align = 'center'>
+		<h1 style = 'color:green;' >
+			Endless Sky Energy Generators
+		</h1>
+
+		<center>
+			<table id='MyTable' class='sortable'>
+				<thead>
+					<tr>
+						<td align='center' title='Race'>RACE</td>
+						<td align='center' title='Name of outfit'>NAME</td>
+						<td align='center' title='Outfit space taken'>MASS</td>
+						<td align='center' title='Heat generated'>HEAT</td>
+						<td align='center' title='Energy used'>DRAW</td>
+						<td align='center' title='Converted Mass Rating'>CMR</td>
+						<td align='center' title='Primary attribute's value'>VALUE</td>
+						<td align='center' title='Value per mass'>V/M</td>
+						<td align='center' title='Value per heat'>V/H</td>
+						<td align='center' title='Value per draw'>V/D</td>
+						<td align='center' title='Value per CMR'>V/C</td>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td align='right'>Coalition</td>
+						<td align='left'>Large Cogeneration Module</td>
+						<td align='right'>46</td>
+						<td align='right'>207.00</td>
+						<td align='right'>0</td>
+						<td align='right'>47.533</td>
+						<td align='right'>318</td>
+						<td align='right'>6.913</td>
+						<td align='right'>1.536</td>
+						<td align='right'>N/A</td>
+						<td align='right'>6.690</td>
+					</tr>
+					<tr>
+						<td align='right'>Coalition</td>
+						<td align='left'>Large Collector Module</td>
+						<td align='right'>21</td>
+						<td align='right'>90</td>
+						<td align='right'>0</td>
+						<td align='right'>21.667</td>
+						<td align='right'>198</td>
+						<td align='right'>9.429</td>
+						<td align='right'>2.200</td>
+						<td align='right'>N/A</td>
+						<td align='right'>9.138</td>
+					</tr>
+					<tr>
+						<td align='right'>Coalition</td>
+						<td align='left'>Large Reactor Module</td>
+						<td align='right'>98</td>
+						<td align='right'>2700</td>
+						<td align='right'>0</td>
+						<td align='right'>118.000</td>
+						<td align='right'>1452</td>
+						<td align='right'>14.816</td>
+						<td align='right'>0.538</td>
+						<td align='right'>N/A</td>
+						<td align='right'>12.305</td>
+					</tr>
+					<tr>
+						<td align='right'>Coalition</td>
+						<td align='left'>Small Cogeneration Module</td>
+						<td align='right'>11</td>
+						<td align='right'>51.00</td>
+						<td align='right'>0</td>
+						<td align='right'>11.378</td>
+						<td align='right'>69.00</td>
+						<td align='right'>6.273</td>
+						<td align='right'>1.353</td>
+						<td align='right'>N/A</td>
+						<td align='right'>6.064</td>
+					</tr>
+					<tr>
+						<td align='right'>Coalition</td>
+						<td align='left'>Small Collector Module</td>
+						<td align='right'>6</td>
+						<td align='right'>24</td>
+						<td align='right'>0</td>
+						<td align='right'>6.178</td>
+						<td align='right'>48</td>
+						<td align='right'>8.000</td>
+						<td align='right'>2.000</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.770</td>
+					</tr>
+					<tr>
+						<td align='right'>Coalition</td>
+						<td align='left'>Small Reactor Module</td>
+						<td align='right'>42</td>
+						<td align='right'>1140</td>
+						<td align='right'>0</td>
+						<td align='right'>50.444</td>
+						<td align='right'>588</td>
+						<td align='right'>14.000</td>
+						<td align='right'>0.516</td>
+						<td align='right'>N/A</td>
+						<td align='right'>11.656</td>
+					</tr>
+					<tr>
+						<td align='right'>Hai</td>
+						<td align='left'>Boulder Reactor</td>
+						<td align='right'>90</td>
+						<td align='right'>2040</td>
+						<td align='right'>0</td>
+						<td align='right'>105.111</td>
+						<td align='right'>1038</td>
+						<td align='right'>11.533</td>
+						<td align='right'>0.509</td>
+						<td align='right'>N/A</td>
+						<td align='right'>9.875</td>
+					</tr>
+					<tr>
+						<td align='right'>Hai</td>
+						<td align='left'>Geode Reactor</td>
+						<td align='right'>58</td>
+						<td align='right'>1272</td>
+						<td align='right'>0</td>
+						<td align='right'>67.422</td>
+						<td align='right'>534</td>
+						<td align='right'>9.207</td>
+						<td align='right'>0.420</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.920</td>
+					</tr>
+					<tr>
+						<td align='right'>Hai</td>
+						<td align='left'>Pebble Core</td>
+						<td align='right'>32</td>
+						<td align='right'>714</td>
+						<td align='right'>0</td>
+						<td align='right'>37.289</td>
+						<td align='right'>270</td>
+						<td align='right'>8.438</td>
+						<td align='right'>0.378</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.241</td>
+					</tr>
+					<tr>
+						<td align='right'>Hai</td>
+						<td align='left'>Sand Cell</td>
+						<td align='right'>24</td>
+						<td align='right'>147.00</td>
+						<td align='right'>0</td>
+						<td align='right'>25.089</td>
+						<td align='right'>99.00</td>
+						<td align='right'>4.125</td>
+						<td align='right'>0.673</td>
+						<td align='right'>N/A</td>
+						<td align='right'>3.946</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>Armageddon Core</td>
+						<td align='right'>130</td>
+						<td align='right'>4200</td>
+						<td align='right'>0</td>
+						<td align='right'>161.111</td>
+						<td align='right'>1452</td>
+						<td align='right'>11.169</td>
+						<td align='right'>0.346</td>
+						<td align='right'>N/A</td>
+						<td align='right'>9.012</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>Breeder Reactor</td>
+						<td align='right'>80</td>
+						<td align='right'>2100</td>
+						<td align='right'>0</td>
+						<td align='right'>95.556</td>
+						<td align='right'>768</td>
+						<td align='right'>9.600</td>
+						<td align='right'>0.366</td>
+						<td align='right'>N/A</td>
+						<td align='right'>8.037</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>Dwarf Core</td>
+						<td align='right'>36</td>
+						<td align='right'>840</td>
+						<td align='right'>0</td>
+						<td align='right'>42.222</td>
+						<td align='right'>288</td>
+						<td align='right'>8.000</td>
+						<td align='right'>0.343</td>
+						<td align='right'>N/A</td>
+						<td align='right'>6.821</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>Fission Reactor</td>
+						<td align='right'>65</td>
+						<td align='right'>1500</td>
+						<td align='right'>0</td>
+						<td align='right'>76.111</td>
+						<td align='right'>564</td>
+						<td align='right'>8.677</td>
+						<td align='right'>0.376</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.410</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>Fusion Reactor</td>
+						<td align='right'>100</td>
+						<td align='right'>2400</td>
+						<td align='right'>0</td>
+						<td align='right'>117.778</td>
+						<td align='right'>1092</td>
+						<td align='right'>10.920</td>
+						<td align='right'>0.455</td>
+						<td align='right'>N/A</td>
+						<td align='right'>9.272</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>KP-6 Photovoltaic Array</td>
+						<td align='right'>16</td>
+						<td align='right'>0</td>
+						<td align='right'>0</td>
+						<td align='right'>16.000</td>
+						<td align='right'>66</td>
+						<td align='right'>4.125</td>
+						<td align='right'>N/A</td>
+						<td align='right'>N/A</td>
+						<td align='right'>4.125</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>KP-6 Photovoltaic Panel</td>
+						<td align='right'>2</td>
+						<td align='right'>0</td>
+						<td align='right'>0</td>
+						<td align='right'>2.000</td>
+						<td align='right'>6</td>
+						<td align='right'>3.000</td>
+						<td align='right'>N/A</td>
+						<td align='right'>N/A</td>
+						<td align='right'>3.000</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>nGVF-AA Fuel Cell</td>
+						<td align='right'>20</td>
+						<td align='right'>114</td>
+						<td align='right'>0</td>
+						<td align='right'>20.844</td>
+						<td align='right'>72</td>
+						<td align='right'>3.600</td>
+						<td align='right'>0.632</td>
+						<td align='right'>N/A</td>
+						<td align='right'>3.454</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>nGVF-BB Fuel Cell</td>
+						<td align='right'>30</td>
+						<td align='right'>174</td>
+						<td align='right'>0</td>
+						<td align='right'>31.289</td>
+						<td align='right'>114</td>
+						<td align='right'>3.800</td>
+						<td align='right'>0.655</td>
+						<td align='right'>N/A</td>
+						<td align='right'>3.643</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>nGVF-CC Fuel Cell</td>
+						<td align='right'>40</td>
+						<td align='right'>228</td>
+						<td align='right'>0</td>
+						<td align='right'>41.689</td>
+						<td align='right'>156</td>
+						<td align='right'>3.900</td>
+						<td align='right'>0.684</td>
+						<td align='right'>N/A</td>
+						<td align='right'>3.742</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>nGVF-DD Fuel Cell</td>
+						<td align='right'>60</td>
+						<td align='right'>342</td>
+						<td align='right'>0</td>
+						<td align='right'>62.533</td>
+						<td align='right'>246</td>
+						<td align='right'>4.100</td>
+						<td align='right'>0.719</td>
+						<td align='right'>N/A</td>
+						<td align='right'>3.934</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>nGVF-EE Fuel Cell</td>
+						<td align='right'>80</td>
+						<td align='right'>468</td>
+						<td align='right'>0</td>
+						<td align='right'>83.467</td>
+						<td align='right'>354</td>
+						<td align='right'>4.425</td>
+						<td align='right'>0.756</td>
+						<td align='right'>N/A</td>
+						<td align='right'>4.241</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>NT-200 Nucleovoltaic</td>
+						<td align='right'>65</td>
+						<td align='right'>900</td>
+						<td align='right'>0</td>
+						<td align='right'>71.667</td>
+						<td align='right'>432</td>
+						<td align='right'>6.646</td>
+						<td align='right'>0.480</td>
+						<td align='right'>N/A</td>
+						<td align='right'>6.028</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>RT-I Radiothermal</td>
+						<td align='right'>45</td>
+						<td align='right'>1080</td>
+						<td align='right'>0</td>
+						<td align='right'>53.000</td>
+						<td align='right'>264</td>
+						<td align='right'>5.867</td>
+						<td align='right'>0.244</td>
+						<td align='right'>N/A</td>
+						<td align='right'>4.981</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>S3 Thermionic</td>
+						<td align='right'>55</td>
+						<td align='right'>720</td>
+						<td align='right'>0</td>
+						<td align='right'>60.333</td>
+						<td align='right'>300</td>
+						<td align='right'>5.455</td>
+						<td align='right'>0.417</td>
+						<td align='right'>N/A</td>
+						<td align='right'>4.972</td>
+					</tr>
+					<tr>
+						<td align='right'>Human</td>
+						<td align='left'>Stack Core</td>
+						<td align='right'>140</td>
+						<td align='right'>3300</td>
+						<td align='right'>0</td>
+						<td align='right'>164.444</td>
+						<td align='right'>1374</td>
+						<td align='right'>9.814</td>
+						<td align='right'>0.416</td>
+						<td align='right'>N/A</td>
+						<td align='right'>8.355</td>
+					</tr>
+					<tr>
+						<td align='right'>Ka'het</td>
+						<td align='left'>MHD Generator</td>
+						<td align='right'>22</td>
+						<td align='right'>348</td>
+						<td align='right'>0</td>
+						<td align='right'>24.578</td>
+						<td align='right'>228</td>
+						<td align='right'>10.364</td>
+						<td align='right'>0.655</td>
+						<td align='right'>N/A</td>
+						<td align='right'>9.277</td>
+					</tr>
+					<tr>
+						<td align='right'>Korath</td>
+						<td align='left'>Double Plasma Core</td>
+						<td align='right'>93</td>
+						<td align='right'>4320</td>
+						<td align='right'>0</td>
+						<td align='right'>125.000</td>
+						<td align='right'>1320</td>
+						<td align='right'>14.194</td>
+						<td align='right'>0.306</td>
+						<td align='right'>N/A</td>
+						<td align='right'>10.560</td>
+					</tr>
+					<tr>
+						<td align='right'>Korath</td>
+						<td align='left'>Generator (Candle Class)</td>
+						<td align='right'>23</td>
+						<td align='right'>420</td>
+						<td align='right'>0</td>
+						<td align='right'>26.111</td>
+						<td align='right'>186</td>
+						<td align='right'>8.087</td>
+						<td align='right'>0.443</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.123</td>
+					</tr>
+					<tr>
+						<td align='right'>Korath</td>
+						<td align='left'>Generator (Furnace Class)</td>
+						<td align='right'>39</td>
+						<td align='right'>780</td>
+						<td align='right'>0</td>
+						<td align='right'>44.778</td>
+						<td align='right'>330</td>
+						<td align='right'>8.462</td>
+						<td align='right'>0.423</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.370</td>
+					</tr>
+					<tr>
+						<td align='right'>Korath</td>
+						<td align='left'>Generator (Inferno Class)</td>
+						<td align='right'>71</td>
+						<td align='right'>1620</td>
+						<td align='right'>0</td>
+						<td align='right'>83.000</td>
+						<td align='right'>624</td>
+						<td align='right'>8.789</td>
+						<td align='right'>0.385</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.518</td>
+					</tr>
+					<tr>
+						<td align='right'>Korath</td>
+						<td align='left'>Plasma Core</td>
+						<td align='right'>54</td>
+						<td align='right'>2160</td>
+						<td align='right'>0</td>
+						<td align='right'>70.000</td>
+						<td align='right'>714</td>
+						<td align='right'>13.222</td>
+						<td align='right'>0.331</td>
+						<td align='right'>N/A</td>
+						<td align='right'>10.200</td>
+					</tr>
+					<tr>
+						<td align='right'>Korath</td>
+						<td align='left'>Triple Plasma Core</td>
+						<td align='right'>169</td>
+						<td align='right'>9240</td>
+						<td align='right'>0</td>
+						<td align='right'>237.444</td>
+						<td align='right'>2616</td>
+						<td align='right'>15.479</td>
+						<td align='right'>0.283</td>
+						<td align='right'>N/A</td>
+						<td align='right'>11.017</td>
+					</tr>
+					<tr>
+						<td align='right'>Quarg</td>
+						<td align='left'>Antimatter Core</td>
+						<td align='right'>80</td>
+						<td align='right'>1200</td>
+						<td align='right'>0</td>
+						<td align='right'>88.889</td>
+						<td align='right'>4800</td>
+						<td align='right'>60.000</td>
+						<td align='right'>4.000</td>
+						<td align='right'>N/A</td>
+						<td align='right'>54.000</td>
+					</tr>
+					<tr>
+						<td align='right'>Remnant</td>
+						<td align='left'>Aeon Cell</td>
+						<td align='right'>160</td>
+						<td align='right'>1890</td>
+						<td align='right'>0</td>
+						<td align='right'>174.000</td>
+						<td align='right'>1314</td>
+						<td align='right'>8.213</td>
+						<td align='right'>0.695</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.552</td>
+					</tr>
+					<tr>
+						<td align='right'>Remnant</td>
+						<td align='left'>Epoch Cell</td>
+						<td align='right'>98</td>
+						<td align='right'>1188</td>
+						<td align='right'>0</td>
+						<td align='right'>106.800</td>
+						<td align='right'>762</td>
+						<td align='right'>7.776</td>
+						<td align='right'>0.641</td>
+						<td align='right'>N/A</td>
+						<td align='right'>7.135</td>
+					</tr>
+					<tr>
+						<td align='right'>Remnant</td>
+						<td align='left'>Millennium Cell</td>
+						<td align='right'>29</td>
+						<td align='right'>360</td>
+						<td align='right'>0</td>
+						<td align='right'>31.667</td>
+						<td align='right'>216</td>
+						<td align='right'>7.448</td>
+						<td align='right'>0.600</td>
+						<td align='right'>N/A</td>
+						<td align='right'>6.821</td>
+					</tr>
+					<tr>
+						<td align='right'>Sheragi</td>
+						<td align='left'>Fission Drive</td>
+						<td align='right'>71</td>
+						<td align='right'>1417.500</td>
+						<td align='right'>125.580</td>
+						<td align='right'>92.823</td>
+						<td align='right'>312</td>
+						<td align='right'>4.394</td>
+						<td align='right'>0.220</td>
+						<td align='right'>2.484</td>
+						<td align='right'>3.361</td>
+					</tr>
+					<tr>
+						<td align='right'>Sheragi</td>
+						<td align='left'>Fusion Drive</td>
+						<td align='right'>480</td>
+						<td align='right'>12879.00</td>
+						<td align='right'>1227.00</td>
+						<td align='right'>686.035</td>
+						<td align='right'>3240</td>
+						<td align='right'>6.750</td>
+						<td align='right'>0.252</td>
+						<td align='right'>2.641</td>
+						<td align='right'>4.723</td>
+					</tr>
+					<tr>
+						<td align='right'>Wanderer</td>
+						<td align='left'>Blue Sun Reactor</td>
+						<td align='right'>152</td>
+						<td align='right'>2340</td>
+						<td align='right'>0</td>
+						<td align='right'>169.333</td>
+						<td align='right'>1878</td>
+						<td align='right'>12.355</td>
+						<td align='right'>0.803</td>
+						<td align='right'>N/A</td>
+						<td align='right'>11.091</td>
+					</tr>
+					<tr>
+						<td align='right'>Wanderer</td>
+						<td align='left'>Large Biochemical Cell</td>
+						<td align='right'>63</td>
+						<td align='right'>294</td>
+						<td align='right'>0</td>
+						<td align='right'>65.178</td>
+						<td align='right'>372</td>
+						<td align='right'>5.905</td>
+						<td align='right'>1.265</td>
+						<td align='right'>N/A</td>
+						<td align='right'>5.707</td>
+					</tr>
+					<tr>
+						<td align='right'>Wanderer</td>
+						<td align='left'>Red Sun Reactor</td>
+						<td align='right'>47</td>
+						<td align='right'>780</td>
+						<td align='right'>0</td>
+						<td align='right'>52.778</td>
+						<td align='right'>498</td>
+						<td align='right'>10.596</td>
+						<td align='right'>0.638</td>
+						<td align='right'>N/A</td>
+						<td align='right'>9.436</td>
+					</tr>
+					<tr>
+						<td align='right'>Wanderer</td>
+						<td align='left'>Small Biochemical Cell</td>
+						<td align='right'>17</td>
+						<td align='right'>84</td>
+						<td align='right'>0</td>
+						<td align='right'>17.622</td>
+						<td align='right'>96</td>
+						<td align='right'>5.647</td>
+						<td align='right'>1.143</td>
+						<td align='right'>N/A</td>
+						<td align='right'>5.448</td>
+					</tr>
+					<tr>
+						<td align='right'>Wanderer</td>
+						<td align='left'>White Sun Reactor</td>
+						<td align='right'>127</td>
+						<td align='right'>1920</td>
+						<td align='right'>0</td>
+						<td align='right'>141.222</td>
+						<td align='right'>1491.00</td>
+						<td align='right'>11.740</td>
+						<td align='right'>0.777</td>
+						<td align='right'>N/A</td>
+						<td align='right'>10.558</td>
+					</tr>
+					<tr>
+						<td align='right'>Wanderer</td>
+						<td align='left'>Yellow Sun Reactor</td>
+						<td align='right'>82</td>
+						<td align='right'>1260</td>
+						<td align='right'>0</td>
+						<td align='right'>91.333</td>
+						<td align='right'>912</td>
+						<td align='right'>11.122</td>
+						<td align='right'>0.724</td>
+						<td align='right'>N/A</td>
+						<td align='right'>9.985</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</body>
+</html>
